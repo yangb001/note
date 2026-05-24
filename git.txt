@@ -1,0 +1,19 @@
+git config --global user.name "yangb001"
+git config --global user.email "xxx"
+
+
+ssh-keygen -t rsa -C "xxx@qq.com"
+
+git branch -M main
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+# 更换远程地址
+git remote remove origin
+git remote add origin https://github.com/yangb001/task-manager.git
+git remote add origin git@github.com:yangb001/task-manager.git
+git push -u origin main
+
+git config --global http.sslverify false
+git config --global http.proxy http://xx:xx@proxycn2.huawei.com:8080
+git config --global https.proxy https://xx:xx@proxycn2.huawei.com:8080
