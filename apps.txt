@@ -1,0 +1,61 @@
+node_mirror: https://mirrors.tools.huawei.com/nodejs/
+npm_mirror: https://mirrors.tools.huawei.com/npm-software/
+
+nvm list available
+nvm install 24.14.1
+
+npm config set proxy "http://username:paasword@proxy.huawei.com:8080"
+npm config set https-proxy "http://username:paasword@proxy.huawei.com:8080"
+
+npm config rm proxy "http://username:paasword@proxy.huawei.com:8080"
+npm config rm https-proxy "http://username:paasword@proxy.huawei.com:8080"
+
+npm install -g pnpm
+
+npm config rm proxy
+npm config rm http-proxy 
+npm config rm https-proxy  
+npm config set no-proxy .huawei.com  
+npm config set registry http://mirrors.tools.huawei.com/npm/
+
+npm view openclaw version
+
+pnpm add -g --allow-build openclaw@2026.5.5
+pnpm add -g --allow-build=openclaw@2026.5.19 openclaw@2026.5.19
+pnpm approve-builds -g
+openclaw onboard --install-daemon
+
+
+openclaw config set agents.defaults.timeoutSeconds 600
+openclaw config set agents.defaults.llm.idleTimeoutSeconds 600
+
+openclaw config set models.providers.xxxxxx.request.allowPrivateNetwork true
+
+
+openclaw gateway stop
+openclaw gateway uninstall
+npm rm -g openclaw
+pnpm remove -g openclaw
+bun remove -g openclaw
+
+#powershell下执行
+$env:NODE_TLS_REJECT_UNAUTHORIZED=0
+
+# cmd 下执行
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+
+# 查看环境变量
+node
+> console.log(process.env) 
+
+echo $ENV:NODE_TLS_REJECT_UNAUTHORIZED
+
+# 查看完整配置结构
+openclaw config schema
+
+
+1、报错
+[security] blocked URL fetch (url-fetch) targetOrigin=http://xxx:8082 reason=Blocked hostname or private/internal/special-use IP address
+
+# 允许xxx模型访问内网
+openclaw config set models.providers.xxxxxx.request.allowPrivateNetwork true
