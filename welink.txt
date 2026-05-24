@@ -1,0 +1,20 @@
+welink_cli
+
+#或者
+npm install -g @welink/welink-cli --registry=https://cmc.centralrepo.rnd.huawei.com/artifactory/api/npm/product_npm/ --strict-ssl=false
+ 
+
+# 删除本地的proxy
+
+npm config delete http-proxy
+npm config delete https-proxy
+npm config delete proxy
+npm config rm http-proxy
+npm config rm https-proxy
+npm config rm proxy
+
+npm install -g @welink/welink-cli
+
+welink-cli config set-oauth-credentials key pps
+welink-cli auth login
+welink-cli im send-to-user --receiver "xxx" --text "hello welink-cli"
